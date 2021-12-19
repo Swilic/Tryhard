@@ -52,7 +52,7 @@ while Continuer:
 	# Fais la somme de chaque valeur dans la colonne.
 	somme = 0
 	for i in sheet.iter_rows(min_row=2, max_row=a, min_col=col_cours, max_col=col_cours):
-		somme += i[0].value
+		somme += i[0].value * 5
 
 	# Ecrit la moyenne en bas de la colonne.
 	sheet[cours+"20"] = somme / (a-1)
