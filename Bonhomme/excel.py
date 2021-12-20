@@ -1,10 +1,11 @@
-from openpyxl import *
+from openpyxl import load_workbook
 
+path = "C:\\Users\\diama\\OneDrive\\TEP 1\\Note.xlsx"
 # Charge le document
-wb = load_workbook(filename="Note.xlsx")
+wb = load_workbook(path)
 sheet = wb.active
 
-# Demande le cours et crée une variable pour la nommé + variable numéro colonne.
+# Demande le cours et crée une variable pour la nommée + variable numéro colonne.
 cours = input("Quel cours: AO, FR, PY, SYS, GBD? ").lower()
 col_cours = 0
 if cours == "ao":
@@ -57,4 +58,4 @@ while Continuer:
 	# Ecrit la moyenne en bas de la colonne.
 	sheet[cours+"20"] = somme / (a-1)
 
-	wb.save(filename="Note.xlsx")
+	wb.save(path)
