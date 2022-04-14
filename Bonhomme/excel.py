@@ -16,7 +16,7 @@ def couleurCellule():
 			# Converti en hexadecimal
 			hexa = '%02x%02x%02x' % rgb
 			# Couleur de la cellule
-			typeCell[0].font = Font(color=str(hexa))
+			typeCell[0].font = Font(color=hexa)
 
 
 def calculMoyenne(colonneactuelle):
