@@ -8,7 +8,7 @@ import os
 
 # Fonction d'une ligne (lambda) pour nettoyer le terminal
 def clear():
-    os.system("clear")
+    os.system("cls")
 
 
 def main():
