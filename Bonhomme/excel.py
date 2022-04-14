@@ -12,14 +12,18 @@ def couleurCellule():
 		# Aucune connaissance des valeurs des index.
 		if typeCell[0].value is not None:
 			# Valeur RGB en fonction de la valeur de la cellule
-			rgb = (int(255 - (typeCell[0].value * 2.55)), int(typeCell[0].value * 2.55), 0)
+			rgb = (int(255-(typeCell[0].value * 2.55)), int(typeCell[0].value * 2.55),  0)
 			# Converti en hexadecimal
 			hexa = '%02x%02x%02x' % rgb
 			# Couleur de la cellule
-			typeCell[0].value = Font(color=hexa)
+			typeCell[0].font = Font(color=str(hexa))
 
 
 def calculMoyenne(colonneactuelle):
+	"""
+	Fonction qui permet de calculer la moyenne d'une colonne et l'écrit
+	"""
+
 	# Prend la dernière valeur de la colonne
 	row = 2
 	precis = dicoCours[cours][0] + str(row)
@@ -36,8 +40,8 @@ def calculMoyenne(colonneactuelle):
 	sheet[colonneactuelle[0] + "20"] = somme / (row - 1)
 
 
-# Charge le document
 path = "C:\\Users\\diama\\OneDrive\\TEP 1\\Note.xlsx"
+# Charge le document
 wb = load_workbook(path)
 sheet = wb.active
 
@@ -46,6 +50,7 @@ cours = input("Quel cours: AO, FR, PY, SYS, GBD? ").lower()
 
 # Dictionnaire pour les numéros des colonnes et leurs lettres associées.
 dicoCours = {"ao": ("A", 1), "fr": ("B", 2), "py": ("C", 3), "sys": ("D", 4), "gbd": ("E", 5)}
+
 # Créer boucle pour demander note plusieurs fois.
 while True:
 	# Nom des cours sur la première ligne. AO, FR, Prog, Sys Expl, GBDD#
