@@ -136,4 +136,5 @@ def main(nbreJoueur=1):
             print("Egalité.")
 
 
-main(3)
+if __name__ == "__main__":
+    main(3)
