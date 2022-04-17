@@ -2,6 +2,9 @@ from jeuDeCarte import *
 
 
 def getCarte(carte):
+    """
+    Fonction qui retourne les cartes du joueur en texte.
+    """
     a = JeuDeCarte()
     li = []
     for tup in carte:
@@ -10,6 +13,9 @@ def getCarte(carte):
 
 
 def getScore(carte):
+    """
+    Fonction qui calcule le score de carte que le joueux possède.
+    """
     score = 0
     is_as = False
     for tup in carte:
@@ -32,7 +38,24 @@ def getScore(carte):
     return score
 
 
+def setup(nbreJoueur, jeux):
+    """
+    Fonction qui distribue les cartes à tout le monde en début de partie
+    """
+
+    # Boucle dans une liste à apprendre/améliorer.
+    # index[0] pour le croupier.
+    carte_joueur = [[1] for _ in range(nbreJoueur + 1)]
+    for joueur in carte_joueur:
+        joueur.append(jeux.tirer())
+        joueur.append(jeux.tirer())
+    return carte_joueur
+
+
 def joueurDedans(liste):
+    """
+    Fonction qui vérifie si les joueurs sont dans la partie.
+    """
     for joueur in liste:
         if joueur[0] == 1:
             return True
@@ -42,13 +65,7 @@ def joueurDedans(liste):
 def main(nbreJoueur=1):
     jeux = JeuDeCarte()
     jeux.melanger()
-
-    # Boucle dans une liste à apprendre/améliorer.
-    # On ajoute 1 pour le dealer.
-    carte_joueur = [[1] for _ in range(nbreJoueur + 1)]
-    for joueur in carte_joueur:
-        joueur.append(jeux.tirer())
-        joueur.append(jeux.tirer())
+    carte_joueur = setup(nbreJoueur, jeux)
 
     # Commence par 1, le croupier étant le joueur 0.
     index_joueur_actuel = 1
