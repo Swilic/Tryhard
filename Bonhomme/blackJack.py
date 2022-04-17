@@ -67,14 +67,13 @@ def main(nbreJoueur=1):
 
             # Condition si joueur toujours actif.
             if joueur_actuel[0] == 1:
-                print(f"\nLe croupier possède: {string_carte_croupier}.\n")
+                print(f"Le croupier possède: {string_carte_croupier}.\n")
                 print(f"Au tour du joueur n°{index_joueur_actuel}")
                 print(f"Vos cartes actuelles sont: {string_carte_actuelle}")
 
                 # Demande action joueur.
                 while True:
-                    # question = input("Voulez-vous tirer une carte? (o/n) ").lower()
-                    question = "o"
+                    question = input("Voulez-vous tirer une carte? (o/n) ").lower()
                     if question == "o":
                         joueur_actuel.append(jeux.tirer())
                         score = getScore(joueur_actuel[1:])
@@ -86,6 +85,7 @@ def main(nbreJoueur=1):
                     else:
                         joueur_actuel[0] = 0
                         break
+                print()
 
             # Action croupier.
             if index_joueur_actuel == nbreJoueur:
