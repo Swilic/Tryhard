@@ -10,20 +10,20 @@ class Quiz:
 
         # Ouvre le fichier, le parcours ligne par ligne et ajoute les questions et les réponses dans les listes
         with open(filename, "r", encoding="utf-8") as f:
-            for lie in f.read().splitlines():
-                self.question.append(lie.split(" - ")[0])
-                self.answer.append(lie.split(" - ")[1])
+            for element in f.read().splitlines():
+                self.question.append(element.split(" - ")[0])
+                self.answer.append(element.split(" - ")[1])
 
     def getQuestion(self):
         # Choisit une question au hasard dans la liste
-        x = random.randint(0, len(self.question))
+        land = random.randint(0, len(self.question))
 
         # Vérifie qu'elle n'a pas déjà été posée
-        if x in self.currentQuestion:
+        if land in self.currentQuestion:
             return self.getQuestion()
         else:
-            self.currentQuestion.append(x)
-            print(f"Quelle est la capitale de {self.question[x]}? ")
+            self.currentQuestion.append(land)
+            print(f"Quelle est la capitale de {self.question[land]}? ")
 
     def getAnswer(self):
         return self.answer[self.currentQuestion[-1]]
