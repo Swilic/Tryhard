@@ -15,7 +15,7 @@ class Quiz:
                 self.answer.append(element.split(" - ")[1])
 
     def getQuestion(self):
-        # Choisit une question au hasard dans la liste
+        # Choisit une question au hasard dans la liste avec l'index
         land = random.randint(0, len(self.question))
 
         # Vérifie qu'elle n'a pas déjà été posée
@@ -31,3 +31,17 @@ class Quiz:
     def checkAnswer(self, answer):
         if answer.lower() == self.getAnswer().lower():
             self.score += 1
+
+    def choixmultiple(self):
+        qcm = [self.answer[self.currentQuestion[-1]]]
+
+        # Ajoute la réponse de la question dans la liste
+        for i in range(3):
+            fausse = random.choice(self.answer)
+            while fausse in qcm:
+                fausse = random.choice(self.answer)
+            qcm.append(fausse)
+
+        random.shuffle(qcm)
+        return qcm
+
